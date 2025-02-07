@@ -1,0 +1,151 @@
+@keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes confetti {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0px 0px 15px rgba(255, 105, 180, 0.5); }
+    50% { box-shadow: 0px 0px 30px rgba(255, 20, 147, 0.8); }
+    100% { box-shadow: 0px 0px 15px rgba(255, 105, 180, 0.5); }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #ffcccb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: glow 3s infinite alternate;
+}
+
+h1 {
+    color: #d63384;
+    animation: floating 2s infinite ease-in-out;
+}
+
+.heart {
+    width: 100px;
+    margin: 10px 0;
+    animation: floating 2s infinite alternate;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+#yes-btn {
+    background-color: #ff1493;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(255, 20, 147, 0.4);
+}
+
+#no-btn {
+    background-color: #999;
+    color: white;
+    position: relative;
+}
+
+.hidden {
+    display: none;
+    font-size: 22px;
+    color: #d63384;
+    margin-top: 10px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Confetti Animation */
+.confetti {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    opacity: 0;
+    animation: confetti 3s linear forwards;
+}
+
+/* Love Poem */
+.poem {
+    display: none;
+    font-size: 18px;
+    color: #d63384;
+    font-style: italic;
+    margin-top: 15px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* New Hearts animation for the background */
+@keyframes hearts {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+.hearts {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart-float {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 105, 180, 0.8);
+    border-radius: 50%;
+    animation: hearts 5s infinite ease-in-out;
+}
+
+.heart-float:nth-child(odd) {
+    animation-delay: 2s;
+}
